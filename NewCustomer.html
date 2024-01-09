@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Customer Information</title>
+<style>
+  body { font-family: Arial, sans-serif; }
+    .form-container { width: 500px; margin: 20px auto; }
+    .form-section { margin-bottom: 20px; }
+    label { display: block; margin-bottom: 5px; }
+    input[type="text"], input[type="email"], input[type="tel"] {
+    width: 100%; padding: 8px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px;
+  }
+
+  button {
+    position: fixed; /* Fixed positioning relative to the viewport */
+    bottom: 0; /* Align to the bottom */
+    left: 0; /* Align to the left */
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #0056b3;
+  }
+
+  .form-container {
+    width: 800px;
+    margin: 0;
+    border: 2px solid #ccc;
+    padding: 15px;
+    /* max-height: 300px; Removed to allow natural height */
+    /* overflow-y: auto; Not needed if scrolling is not required */
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 12px;
+  }
+  
+  input[type="text"], input[type="email"], input[type="tel"] {
+    width: 100%;
+    padding: 4px; /* Reduced padding */
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    font-size: 10px;
+  }
+
+  button {
+    padding: 10px 20px;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  #clearForm {
+    background-color: #dc3545; /* Red color for clear button */
+  }
+  
+  #clearForm:hover {
+    background-color: #bd2130; /* Darker red on hover */
+  }
+  
+  /* Optional: Align buttons next to each other */
+  .form-buttons {
+    display: flex;
+    justify-content: left; /* Align buttons to the left */
+  }  
+  .second-form {
+    margin-top: 10px; /* Adjust the value to the desired spacing */
+  }
+  
+</style>
+</head>
+<body>
+
+<div class="form-container">
+    <form id="customerForm">
+            <div class="form-section">
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="firstName">
+            <!-- Repeat for other fields... -->
+        </div>
+        <div class="form-section">
+            <label for="middlename">Middle Name:</label>
+            <input type="text" id="middlename" name="">
+            <!-- Repeat for other fields... -->
+        </div>
+        <div class="form-section">
+            <label for="lastname">Last Name:</label>
+            <input type="text" id="lastname" name="">
+            <!-- Repeat for other fields... -->
+        </div>
+        <div class="form-section">
+            <label for="suffix">Suffix:</label>
+            <input type="text" id="suffix" name="">
+            <!-- Repeat for other fields... -->
+        </div>
+        <div class="form-section">
+            <label for="email address">Email Address:</label>
+            <input type="text" id="emailaddress" name="">
+            <!-- Repeat for other fields... -->
+        </div>
+    </form>
+</div>
+<div class="form-container">
+    <form id="customerForm">
+      <div class="form-section">
+        <label for="address">Address:</label>
+        <input type="text" id="Address" name="address">
+        <!-- Repeat for other fields... -->
+      </div>
+      <div class="form-section">
+          <label for="city">City:</label>
+          <input type="text" id="city" name="">
+          <!-- Repeat for other fields... -->
+      </div>
+      <div class="form-section">
+          <label for="state">State:</label>
+          <input type="text" id="state" name="">
+          <!-- Repeat for other fields... -->
+      </div>
+      <div class="form-section">
+          <label for="country">Country:</label>
+          <input type="text" id="country" name="">
+          <!-- Repeat for other fields... -->
+      </div>
+      <div class="form-section">
+          <label for="zip code">Zip Code:</label>
+          <input type="text" id="zipcode" name="">
+          <!-- Repeat for other fields... -->
+      </div>
+    </form>
+</div>
+<div>
+    <button type="submit">Save</button>
+      <button type="button" id="clearForm">Clear</button>
+</div>
+
+<script>
+document.getElementById('customerForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+  
+  // Collect data from the form
+  var customerData = {
+    firstName: document.getElementById('firstName').value
+    // ... collect other form data
+  };
+  
+  console.log(customerData); // For demonstration, log to the console
+  // Here you would send data to the server
+});
+</script>
+
+<script>
+    document.getElementById('clearForm').addEventListener('click', function() {
+        document.getElementById('customerForm').reset();
+      });      
+</script>
+
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>System Preferences</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        .section-title {
+            color: #333;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        .section-content {
+            border: 1px solid #ddd;
+            padding: 10px;
+            background-color: #f9f9f9;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 5px;
+            text-align: left;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .home-icon {
+            position: fixed; /* Fixed position */
+            top: 10px; /* 10 pixels from the top */
+            right: 10px; /* 10 pixels from the right */
+            z-index: 100; /* Ensures it stays on top of other elements */
+        }
+        
+        .home-icon img {
+            width: 27px; /* Adjust width as needed */
+            height: auto; /* Maintain aspect ratio */
+        }
+        
+    </style>
+</head>
+
+<body>
+
+    <div class="home-icon">
+        <a href="AransasPass.html">
+            <img src="C:/Users/maym2/Downloads/25694.png" />
+        </a>
+    </div>
+  
+
+    <div class="section">
+        <select id="systemPreferences" class="section-title" onchange="updateNames()">
+            <option value="beaumont">Beaumont</option>
+            <option value="sanAntonio">San Antonio</option>
+            <option value="aransasPass">Aransas Pass</option>
+            <option value="corpusChristi">Corpus Christi</option>
+        </select>
+    </div>    
+        
+    <div class="section-content">
+        <table id="namesList">
+            <!-- Names will be dynamically inserted here -->
+        </table>
+    </div>
+</body>
+
+<script>
+    function updateNames() {
+        var store = document.getElementById('systemPreferences').value;
+        var namesList = document.getElementById('namesList');
+        namesList.innerHTML = ''; // Clear the current list
+    
+        if(store === 'aransasPass') {
+            namesList.innerHTML += '<tr><td>Judy Arnold</td></tr>';
+            namesList.innerHTML += '<tr><td>Herbert Bernera</td></tr>';
+            namesList.innerHTML += '<tr><td>Chad McKee</td></tr>';
+            namesList.innerHTML += '<tr><td>Christian Wallingsford</td></tr>';
+            namesList.innerHTML += '<tr><td>Christy Munoz</td></tr>';
+            namesList.innerHTML += '<tr><td>Malia Cuellar</td></tr>';
+            namesList.innerHTML += '<tr><td>James Hampton</td></tr>';
+        } else if(store === 'corpusChristi') {
+            namesList.innerHTML += '<tr><td>Ruben Estrada</td></tr>';
+            namesList.innerHTML += '<tr><td>Ryan Goodwin</td></tr>';
+        }else if(store === 'sanAntonio') {
+            namesList.innerHTML += '<tr><td>Miles May</td></tr>'; 
+            namesList.innerHTML += '<tr><td>Vernon Hartman</td></tr>'; 
+            namesList.innerHTML += '<tr><td>Chad</td></tr>'; 
+            namesList.innerHTML += '<tr><td>Parick Earle</td></tr>'; 
+            namesList.innerHTML += '<tr><td>Darren Royal</td></tr>';  
+            namesList.innerHTML += '<tr><td>Ernest Sanez</td></tr>'; 
+            namesList.innerHTML += '<tr><td>Eric Williamson</td></tr>'; 
+            namesList.innerHTML += '<tr><td>Luiz</td></tr>'; 
+            namesList.innerHTML += '<tr><td>Quincy Wolfe</td></tr>'; 
+        }else if(store == 'beaumont') {
+            namesList.innerHTML += '<tr><td>Jayson Gibbs</td></tr>';
+        }
+        
+    }    
+</script>
+
+</body>
+</html>

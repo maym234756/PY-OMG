@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Premier Boating Center & Ocean Marine Group</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="updateCheck" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 400px; height: 300px; background-color: white; border: 1px solid #ddd; padding: 20px; box-shadow: 2px 2px 8px rgba(0,0,0,0.1); text-align: center; z-index: 1000;">
+        <div class="loader"></div>
+        <p>Checking for updates, please wait...</p>
+        <img src="C:/Users/maym2/Downloads/Sea Trial.png" alt="Loading Icon" style="width: 320px; height: auto; display: block; margin: 0 auto;">
+    </div>    
+      
+    <div id="login-container2" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 300px; padding: 20px; border: 1px solid #ddd; box-shadow: 2px 2px 8px rgba(0,0,0,0.1);">
+        <!-- Login form here -->
+    </div>            
+    <video autoplay muted loop id="background-video">
+        <source src="C:/Users/maym2/Downloads/Welcome to Premier Yamaha. Southeast Texas Top Bay & Bass Boat Dealer. Plus Pontoon & Aluminum.mp4" type="video/mp4">
+    </video>
+    <div id="login-container" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 300px; padding: 20px; border: 1px solid #ddd; box-shadow: 2px 2px 8px rgba(0,0,0,0.1);">
+        <h2 style="text-align: center; margin-bottom: 20px;">Login Page</h2>
+        <form id="login-form">
+            <input type="text" id="email" placeholder="Email" style="width: 90%; padding: 10px; margin-bottom: 10px; border: 1px solid #ddd;">
+            <input type="password" id="password" placeholder="Password" style="width: 90%; padding: 10px; margin-bottom: 20px; border: 1px solid #ddd;">
+            <button type="submit" style="width: 100%; padding: 10px; border: none; background-color: #007bff; color: white;">Login</button>
+        </form>
+    </div>
+    
+  <script>
+    // Array of valid credentials
+    var validCredentials = [
+        { email: 'mmay@premier-yamaha.com', password: 'Sandy321!' },
+        { email: 'servicesa@premier-yamaha.com', password: 'Report2me!' },
+        { email: 'serviceap@premier-yamaha.com', password: 'Premier2022!' },
+        { email: 'servicebmt@premier-yamaha.com', password: 'Eileen30!!' }
+        // Add more as needed
+    ];
+
+    function login() {
+        var email = document.getElementById('email').value.trim();
+        var password = document.getElementById('password').value.trim();
+    
+        // Check if entered credentials match any of the valid ones
+        var isValidLogin = validCredentials.some(function(credential) {
+            return credential.email === email && credential.password === password;
+        });
+    
+        if (isValidLogin) {
+            // Redirect to Store-Locator.html on successful login
+            window.location.href = 'Store-Locator.html';
+        } else {
+            // Handle failed login attempt
+            alert('Invalid email or password.');
+            document.getElementById('login-form').reset(); // Reset form fields
+    
+            // Add a console.log statement to check if the function is triggered
+            console.log('Login function was called but login failed.');
+        }
+    }
+    
+
+    // Attach the login function to the form submission event
+    document.getElementById('login-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        login();
+    });
+    </script>
+
+    <script>
+    window.onbeforeunload = function() {
+        var video = document.getElementById('background-video');
+        localStorage.setItem('videoTime', video.currentTime);
+    };
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                document.getElementById('updateCheck').style.display = 'none';
+                document.getElementById('login-container2').style.display = 'none'; // Hide login-container2
+                document.getElementById('login-container').style.display = 'block'; // Show login-container
+            }, 10000); // Simulate update check delay for 10 seconds
+        });
+    </script>           
+
+</body>
+</html>

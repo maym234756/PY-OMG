@@ -1,0 +1,17 @@
+{
+    "name": "Sea Trial",
+    "version": "1.0.8",
+    "description": "Your app description",
+    "main": "main.js",
+    "scripts": {
+        "start": "electron .",
+        "pack": "electron-builder --dir",
+        "dist": "electron-builder -p always"
+    },
+    "devDependencies": {
+        "electron": "^28.1.1",
+        "electron-builder": "^24.9.1",
+        "electron-packager": "^17.1.2",
+        "electron-updater": "^6.1.7"
+    }
+}

@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Estimates & Repair Orders</title>
+<style>
+  /* Inline CSS for simplicity */
+  body { font-family: Arial, sans-serif; }
+  table { width: 100%; border-collapse: collapse; }
+  th, td { border: 1px solid #ddd; padding: 6px; text-align: left; }
+  th { background-color: black; }
+  .highlight-yellow { background-color: yellow; }
+  .highlight-green { background-color: lightgreen; }
+  .highlight-red { background-color: salmon; }
+</style>
+<style>
+    th {
+      position: relative;
+    }
+    .resize-handle {
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 5px;
+      cursor: ew-resize;
+    }
+
+    th {
+      color: white; /* Replace #yourColor with the color code you want */
+    }
+
+    th {
+    height: 10px; /* Adjust the height as needed */
+    line-height: 10px; /* This should generally match the height to vertically center the text */
+    font-size: 12px; /* Adjust the text size as needed */
+    }
+    
+</style>
+
+<style>
+    /* Add the necessary CSS for table layout and the resize handle */
+    th {
+      position: relative;
+    }
+    .resizer {
+      position: absolute;
+      right: 0;
+      transform: translateX(50%);
+      width: 10px;
+      height: 100%;
+      cursor: ew-resize;
+      z-index: 1;
+    }
+
+    .name-row th {
+      text-align: center;
+      /* Apply any additional styles you need for these header names */
+    } 
+
+  .name-row .resizer {
+    display: none; /* This will hide the resizer handle */
+  }  
+    
+  </style>
+</head>
+
+<body>
+
+  <!-- Table mimicking the structure of the interface -->
+  <table>
+    <thead>
+      <tr class="name-row">
+        <th colspan="2">
+          <input type="checkbox" id="checkbox-estimates">
+          Estimates
+        </th>        
+        <th colspan="2">
+          <input type="checkbox" id="checkbox-Work_Orders">
+          Work_Orders
+        </th>
+        <th colspan="2">
+          <input type="checkbox" id="checkbox-Cashiered_Work Orders">
+          Cashiered_Work Orders
+        </th>        
+        <th colspan="2">
+          <input type="checkbox" id="checkbox-Canceled_Work Orders">
+          Canceled_Work Orders
+        </th>        
+        <th colspan="2">
+          <input type="checkbox" id="checkbox-Canceled_Estimates">
+          Canceled_Estimates
+        </th>        
+      </tr>
+  </table>
+
+<table>
+  <thead>
+    <tr>
+      <th>Customer Name<div class="resize-handle" onmousedown="startResizing(event, 0)"></div></th>
+      <th>RO #<div class="resize-handle" onmousedown="startResizing(event, 0)"></div></th>
+      <th>InDate<div class="resize-handle" onmousedown="startResizing(event, 0)"></div></th>
+      <th>RO Status<div class="resize-handle" onmousedown="startResizing(event, 0)"></div></th>
+      <th>Year<div class="resize-handle" onmousedown="startResizing(event, 0)"></div></th>
+      <th>Make<div class="resize-handle" onmousedown="startResizing(event, 0)"></div></th>
+      <th>Model<div class="resize-handle" onmousedown="startResizing(event, 0)"></div></th>
+      <th>Vin #<div class="resize-handle" onmousedown="startResizing(event, 0)"></div></th>
+      <th>Stock #<div class="resize-handle" onmousedown="startResizing(event, 0)"></div></th>
+      <th>Service Writer<div class="resize-handle" onmousedown="startResizing(event, 0)"></div></th>
+      <th>Category<div class="resize-handle" onmousedown="startResizing(event, 0)"></div></th>
+      <th>Notes<div class="resize-handle" onmousedown="startResizing(event, 0)"></div></th>
+      <th>Job Title<div class="resize-handle" onmousedown="startResizing(event, 0)"></div></th>
+    </tr>
+  </thead>  
+  <tbody>
+    <tr>
+      <td></td>
+      <td class=></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <!-- More rows -->
+    <tr>
+        <td></td>
+        <td class=></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <!-- More rows -->
+    <tr>
+        <td></td>
+        <td class=></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <!-- More rows -->
+    <tr>
+        <td></td>
+        <td class=></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <!-- More rows -->
+    <tr>
+        <td></td>
+        <td class=></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <!-- More rows -->
+    <tr>
+        <td></td>
+        <td class=></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <!-- More rows -->
+    <tr>
+        <td></td>
+        <td class=></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <!-- More rows -->
+    <tr>
+        <td></td>
+        <td class=></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <!-- More rows -->
+    <tr>
+        <td></td>
+        <td class=></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <!-- More rows -->
+    <tr>
+        <td></td>
+        <td class=></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <!-- More rows -->
+    <tr>
+        <td></td>
+        <td class=></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <!-- More rows -->
+    <tr>
+        <td></td>
+        <td class=></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <!-- More rows -->
+    <tr>
+        <td></td>
+        <td class=></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <!-- More rows -->
+    <tr>
+        <td></td>
+        <td class=></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <!-- More rows -->
+    <tr>
+        <td></td>
+        <td class=></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <!-- More rows -->
+    <tr>
+        <td></td>
+        <td class=></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <!-- More rows -->
+    <tr>
+        <td></td>
+        <td class=></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <!-- More rows -->
+    <tr>
+        <td></td>
+        <td class=></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <!-- More rows -->
+    <tr>
+        <td></td>
+        <td class=></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <!-- More rows -->
+    <tr>
+        <td></td>
+        <td class=></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <!-- More rows -->
+    <tr>
+        <td></td>
+        <td class=></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <!-- More rows -->
+    <tr>
+        <td></td>
+        <td class=></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <!-- More rows -->
+    <tr>
+        <td></td>
+        <td class=></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <!-- More rows -->
+    <tr>
+        <td></td>
+        <td class=></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <!-- More rows -->
+    <tr>
+        <td></td>
+        <td class=></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <!-- More rows -->
+    <tr>
+        <td></td>
+        <td class=></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <!-- More rows -->
+    <tr>
+        <td></td>
+        <td class=></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <!-- More rows -->
+    <tr>
+        <td></td>
+        <td class=></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <!-- More rows -->
+    <tr>
+        <td></td>
+        <td class=></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <!-- More rows -->
+    <tr>
+        <td></td>
+        <td class=></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <!-- More rows -->
+    <tr>
+        <td></td>
+        <td class=></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <!-- More rows -->
+    <tr>
+        <td></td>
+        <td class=></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <!-- More rows -->
+    <tr>
+        <td></td>
+        <td class=></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <!-- More rows -->
+    <tr>
+        <td></td>
+        <td class=></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <!-- More rows -->
+    <tr>
+        <td></td>
+        <td class=></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <!-- More rows -->
+    <tr>
+        <td></td>
+        <td class=></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <!-- More rows -->
+    <tr>
+        <td></td>
+        <td class=></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <!-- More rows -->
+    <tr>
+        <td></td>
+        <td class=></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <!-- More rows -->
+    <tr>
+        <td></td>
+        <td class=></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <!-- More rows -->
+    <tr>
+        <td></td>
+        <td class=></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <!-- More rows -->
+    <tr>
+        <td></td>
+        <td class=></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <!-- More rows -->
+    <tr>
+        <td></td>
+        <td class=></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <!-- More rows -->
+    <tr>
+        <td></td>
+        <td class=></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <!-- More rows -->
+    <tr>
+        <td></td>
+        <td class=></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+  </tbody>
+</table>
+
+<script>
+// Inline JavaScript for simplicity
+function handleServiceChange() {
+  var service = document.getElementById('serviceDropdown').value;
+  if(service === 'EstimateAndRepairOrders') {
+    window.location.href = 'EstimateAndRepairOrders.html'; // Redirect to the desired HTML page
+  }
+}
+</script>
+
+<script>
+let startWidth;
+let pressed = false;
+let start = undefined;
+let index = undefined;
+
+function startResizing(event, idx) {
+  pressed = true;
+  start = event.clientX;
+  startWidth = event.target.parentNode.offsetWidth;
+  index = idx;
+  document.addEventListener('mousemove', resizeColumn);
+  document.addEventListener('mouseup', () => {
+    document.removeEventListener('mousemove', resizeColumn);
+    pressed = false;
+  });
+}
+
+function resizeColumn(event) {
+  if (pressed) {
+    let width = startWidth + (event.clientX - start);
+    document.getElementsByTagName('th')[index].style.width = width + 'px';
+  }
+}
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Function to start resizing
+        function initResize(e) {
+          // Store the current width and mouse position
+          const th = e.target.parentElement;
+          const startX = e.clientX;
+          let startWidth = th.offsetWidth;
+      
+          // Function to perform resizing
+          function resize(e) {
+            th.style.width = startWidth + (e.clientX - startX) + 'px';
+          }
+      
+          // Add temporary mousemove event listener
+          document.addEventListener('mousemove', resize);
+      
+          // Remove event listeners when mouse button is released
+          function stopResize() {
+            document.removeEventListener('mousemove', resize);
+            document.removeEventListener('mouseup', stopResize);
+          }
+      
+          // Add mouseup event listener to stop resizing
+          document.addEventListener('mouseup', stopResize);
+        }
+      
+        // Attach resizer to each table header
+        const thElements = document.getElementsByTagName('th');
+        Array.from(thElements).forEach(th => {
+          const resizer = document.createElement('div');
+          resizer.style.width = '10px';
+          resizer.style.height = '100%';
+          resizer.style.position = 'absolute';
+          resizer.style.right = '0';
+          resizer.style.top = '0';
+          resizer.style.cursor = 'ew-resize';
+          resizer.addEventListener('mousedown', initResize);
+          th.appendChild(resizer);
+        });
+      });      
+</script>
+  
+
+</body>
+</html>

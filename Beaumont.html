@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="APStyle.css">
+        <title>Navbar</title>
+</head>
+    <style>
+    /* Your CSS styles go here */
+    * {
+        margin: 0;
+        padding: 0;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+    
+    body {
+        height: 100vh;
+    }
+    
+    /* Rest of your styles... */
+    </style>
+<body>
+    <div class="container">
+        <header class="header">
+            <nav class="navbar">
+                <div class="left-section">
+                    <h1>Sea Trial - Premier Boating Center - Beaumont - Miles May</h1>
+                </div>
+                <div class="right-section">
+                    <ul class="nav-links">
+                        <li class="nav-link">
+                            <a href="#">Application</a>
+                            <ul>
+                                <li>Close All</li>
+                                <li><a href="Store-Locator.html">Switch Store</a></li>
+                                <li><a href="index.html">Logout</a></li>
+
+                            </ul>
+                        </li>
+                        <li class="nav-link">
+                            <a href="#">Services</a>
+                            <ul>
+                                <li>New Estimate</li>
+                                <li>New Repair Order</li>
+                                <li>New RO for Major Unit</li>
+                                <li>Estimate & Repair Orders</li>
+                                <li>Update Labor Paid</li>
+                                <li>Technician Time Entry</li>
+                                <li>Service Scheduler w Calander</li>
+                                <li>Warranty Claims</li>
+                                <li>List</li>
+                                <li>Reports</li>
+                                <li>Customer Reports</li>
+                            </ul>
+                        </li>
+                        <li class="nav-link">
+                            <a href="#">Parts</a>
+                            <ul>
+                                <li><a href="APInvoice.html">Parts Invoice</a></li>
+                                <li>Parts Inventory</li>
+                                <li>Order Pad</li>
+                                <li>Receiving Pad</li>
+                                <li>Supplier Return</li> 
+                                <li>Shipping Inquiry</li>
+                                <li>Cashiering</li>
+                                <li>Inventory Updating</li>
+                                <li>Lists</li>
+                                <li>Reports</li>
+                                <li>Custom Reports</li>
+                            </ul>
+                        </li>
+                        <li class="nav-link">
+                            <a href="#">Sales</a>
+                            <ul>
+                                <li>New Quotes</li>
+                                <li>Leads, Quotes, and Deals</li>
+                                <li>Major Unit Inquiry</li>
+                                <li>Major Unit Locator</li>
+                                <li>Major Unit Transfer</li>
+                                <li>Value Guide Sheet</li>
+                                <li>Door Swing</li>
+                                <li>Major Unit Inventory</li>
+                                <li>Transfer Sheet</li>
+                                <li>Commission</li>
+                            </ul>
+                        </li>
+                        <li class="nav-link">
+                            <a href="#">Management Activity</a>
+                            <ul>
+                                <li>Management Activities</li>
+                                <li>Cashier Accountability Report</li>
+                                <li>Cashier Reconciliation Report</li>
+                                <li>Custom Reports</li>
+                            </ul>
+                        </li>
+                        <li class="nav-link">
+                            <a href="#">System</a>
+                            <ul>
+                                <li>Time Clock</li>
+                                <li>Calander</li>
+                                <li>Desktop</li>
+                                <li>Email Notification</li>
+                                <li>User Prefrence</li>
+                                <li>Tools</li>
+                                <li>All Custom Reports</li>
+                            </ul>
+                        </li>
+                        <li class="nav-link">
+                            <a href="#">Help Center</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+    </div>
+
+    <div id="hiddenContent" style="display:none;">
+        <!-- Content from Estimate & Repair Orders.html will load here -->
+      </div>
+      
+
+    <div id="leftNavbar" class="sidebar">
+    </div> 
+    
+    <div id="repairOrderScreen" class="repair-order-screen">
+        <div class="top-bar">
+            <button class="action-button">Cashier</button>
+            <button class="action-button">Scheduled RO</button>
+            <button class="action-button">Print</button>
+            <button class="action-button">Transfer Job</button>
+            <button class="action-button">Sell Parts</button>
+            <button class="action-button">Refresh Job Status</button>
+        </div>
+        <div class="input-fields">
+            <input type="text" placeholder="Name">
+            <input type="text" placeholder="Address">
+            <input type="text" placeholder="City">
+            <input type="text" placeholder="State">
+        </div>
+    </div>
+
+    <div id="myHiddenDiv">
+        <!-- Your content here -->
+    </div>
+    
+
+    <script>
+        // JavaScript for dropdown functionality
+        var dropdowns = document.getElementsByClassName("dropbtn");
+        for (var i = 0; i < dropdowns.length; i++) {
+        dropdowns[i].addEventListener("click", function() {
+          var dropdownContent = this.nextElementSibling;
+          if (dropdownContent.style.display === "block") {
+              dropdownContent.style.display = "none";
+            } else {
+              dropdownContent.style.display = "block";
+            }
+            
+        });
+    }
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var serviceItems = document.querySelectorAll("li.nav-link:nth-child(2) ul li");
+            var partsItems = document.querySelectorAll("li.nav-link:nth-child(3) ul li");
+            var salesItems = document.querySelectorAll("li.nav-link:nth-child(4) ul li");
+            var managementactivityItems = document.querySelectorAll("li.nav-link:nth-child(5) ul li");
+            var systemItems = document.querySelectorAll("li.nav-link:nth-child(6) ul li");
+            var sidebar = document.getElementById("leftNavbar");
+            var itemCount = 0; // Initialize the item count
+        
+            // Function to add items to the sidebar
+            function addToSidebar(itemName) {
+                // Check if the maximum item count (20) has been reached
+                if (itemCount >= 20) {
+                    alert("You can only add up to 20 items to the sidebar.");
+                    return;
+                }
+        
+                // Check if item already exists
+                if (!sidebar.innerHTML.includes(itemName)) {
+                    var existingContent = sidebar.innerHTML;
+                    var newItem = `<p style='color: white;'><span class='close-btn' style='cursor: pointer;'>X</span> ${itemName}</p>`;
+                    sidebar.innerHTML = existingContent + newItem;
+                    itemCount++; // Increment the item count
+        
+                    // Add click event to the new close button
+                    var closeButtons = sidebar.querySelectorAll('.close-btn');
+                    closeButtons.forEach(btn => {
+                        btn.removeEventListener('click', closeClickHandler);
+                        btn.addEventListener('click', closeClickHandler);
+                    });
+                }
+            }
+        
+            // Function to handle close button click
+            function closeClickHandler(event) {
+                event.target.parentNode.remove(); // Remove the parent paragraph of the clicked X
+                itemCount--; // Decrement the item count
+            }
+        
+            // Attach event listeners for Service items
+            serviceItems.forEach(item => {
+                var itemName = item.textContent.trim();
+                     if (
+                    itemName === "New Estimate" ||
+                    itemName === "New RO for Major Unit" ||
+                    itemName === "New RO for Major Unit" ||
+                    itemName === "New Repair Order" ||
+                    itemName === "Update Labor Paid" ||
+                    itemName === "Technician Time Entry" ||
+                    itemName === "Service Scheduler w Calendar" ||
+                    itemName === "Warranty Claims"
+                ) {
+                    item.addEventListener("click", function (event) {
+                        event.preventDefault();
+                        addToSidebar(itemName);
+                        sidebar.style.display = "block";
+                    });
+                }
+            });
+        
+            // Attach event listeners for Parts items
+            partsItems.forEach(item => {
+                var itemName = item.textContent.trim();
+                if (
+                    itemName === "Parts Inventory" ||
+                    itemName === "Order Pad" ||
+                    itemName === "Receiving Pad" ||
+                    itemName === "Supplier Return" ||
+                    itemName === "Shipping Inquiry"
+                ) {
+                    item.addEventListener("click", function (event) {
+                        event.preventDefault();
+                        addToSidebar(itemName);
+                        sidebar.style.display = "block";
+                    });
+                }
+            });
+
+            // Attach event listeners for Sales items
+            salesItems.forEach(item => {
+                var itemName = item.textContent.trim();
+                if (
+                    itemName === "New Quotes" ||
+                    itemName === "Leads, Quotes, and Deals" ||
+                    itemName === "Major Unit Inquiry" ||
+                    itemName === "Major Unit Locator" ||
+                    itemName === "Major Unit Transfer" ||
+                    itemName === "Value Guide Sheet"  ||
+                    itemName === "Door Swing" ||
+                    itemName === "Major Unit Inventory" ||
+                    itemName === "Transfer Sheet" ||
+                    itemName === "Commission"    
+                ) {
+                    item.addEventListener("click", function (event) {
+                        event.preventDefault();
+                        addToSidebar(itemName);
+                        sidebar.style.display = "block";
+                    });
+                }
+            });
+
+            // Attach event listeners for Sales items
+            managementactivityItems.forEach(item => {
+                var itemName = item.textContent.trim();
+                if (
+                    itemName === "Management Activities" ||
+                    itemName === "Cashier Accountability Report" ||
+                    itemName === "Cashier Reconciliation Report" ||
+                    itemName === "Transaction Report"      
+                ) {
+                    item.addEventListener("click", function (event) {
+                        event.preventDefault();
+                        addToSidebar(itemName);
+                        sidebar.style.display = "block";
+                    });
+                }
+            });
+
+            // Attach event listeners for Sales items
+            systemItems.forEach(item => {
+                var itemName = item.textContent.trim();
+                if (
+                    itemName === "Time Clock" ||
+                    itemName === "Calander" ||
+                    itemName === "Desktop" ||
+                    itemName === "Email Notification" ||
+                    itemName === "User Prefrence" ||
+                    itemName === "Tools"     
+                ) {
+                    item.addEventListener("click", function (event) {
+                        event.preventDefault();
+                        addToSidebar(itemName);
+                        sidebar.style.display = "block";
+                    });
+                }
+            });
+        });
+        
+    </script>
+
+    <script>
+        function loadEstimateAndRepairOrders() {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+              if (xhr.readyState == 4 && xhr.status == 200) {
+                document.getElementById('hiddenContent').innerHTML = xhr.responseText;
+                document.getElementById('hiddenContent').style.display = 'block';
+              }
+            };
+            xhr.open('GET', 'Estimate & Repair Orders.html', true);
+            xhr.send();
+          }
+          
+    </script>
+
+    <script>
+        // Assuming 'Estimate & Repair Orders' has an ID or specific selector
+        document.getElementById('estimateRepairOrderLink').addEventListener('click', function(event) {
+            event.preventDefault();
+            loadEstimateAndRepairOrders();
+        });
+  
+    </script>
+</body>
+</html>

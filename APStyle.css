@@ -1,0 +1,240 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body {
+    height: 100vh;
+}
+
+.container {
+    background: url("C:/Users/maym2/Downloads/Sea Trial.png") center no-repeat;
+    height: 100%;
+    background-size: cover;
+}
+
+.header {
+    height: 1rem;
+    display: flex;
+    background: linear-gradient(45deg, #0000004a, transparent);
+}
+
+nav {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    color: #fff;
+    margin: auto;
+}
+
+.left-section {
+    margin-left: 0;
+    padding-left: 0;
+    text-align: left; /* Aligns the text to the left */
+    /* Ensure this element is not affected by other layout properties like flex or grid */
+}
+
+.left-section h1 {
+    font-size: 0.8rem;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+}
+
+
+.right-section {
+    display: flex;
+    gap: 0.1rem;
+    align-items: center;
+}
+
+.nav-links {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.nav-link {
+    list-style: none;
+    cursor: pointer;
+    font-size: 11px;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    position: relative;
+}
+
+.btn-login {
+    background: linear-gradient(45deg, #e1d5f5, #63a9fe);
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+a:hover {
+    color: #00bfff;
+}
+
+a::before {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -5px;
+    margin: auto;
+    width: 0%;
+    content: '';
+    color: transparent;
+    background: linear-gradient(45deg, #e1d5f5, #63a9fe);
+    height: 1px;
+    transition: all 0.3s;
+}
+
+a:hover::before {
+    width: 100%;
+}
+
+/* Style for dropdown content */
+.nav-link ul {
+    display: none;
+    position: absolute;
+    background-color: black; /* Change to your preferred background color */
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 2000; /* Make sure the dropdown is in front of other elements */
+}
+
+/* Show dropdown content on hover */
+.nav-link:hover ul {
+    display: block;
+    z-index: 2000; /* Higher z-index ensures it appears in front of the header */
+}
+
+/* You might also want to style the individual dropdown items */
+.nav-link ul li a {
+    color: #333; /* Dropdown font color */
+    /* Add other styling for dropdown items (padding, hover effect, etc.) */
+}
+
+.sidebar {
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    z-index: 1;
+    top: 16px;
+    left: 0;
+    background-color: none;
+    overflow-x: hidden;
+    padding-top: 20px;
+    border: 1px solid white; /* 1px wide solid white border */
+}
+  
+.sidebar a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 10px;
+    color: #818181;
+    display: block;
+}
+  
+.sidebar a:hover {
+    color: Purple;
+}
+  
+@media screen and (max-height: 450px) {
+    .sidebar {padding-top: 15px;}
+    .sidebar a {font-size: 18px;}
+}
+
+#myHiddenDiv {
+    display: none; /* Initially hidden */
+    border: 1px solid #000; /* Optional: border for the div */
+    /* Other styling as needed */
+}
+
+#hiddenContent {
+    display: none;
+    position: fixed; /* Fixed position to overlay the whole page */
+    top: 1rem;
+    left: 200px;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+    z-index: 1000; /* Ensure it appears on top */
+    overflow-y: auto; /* Add scroll for overflow content */
+}
+
+.sidebar-item {
+    color: #fff; /* White text color */
+    background-color: #333; /* Dark background for visibility */
+    margin-bottom: 10px; /* Spacing between items */
+    padding: 5px; /* Padding inside the items */
+    border-radius: 5px; /* Rounded corners */
+    display: flex; /* For inline layout of text and button */
+    justify-content: space-between; /* Space between text and button */
+    align-items: center; /* Center items vertically */
+}
+
+.closeButton {
+    background-color: red; /* Red background for visibility */
+    color: white; /* White text color */
+    border: none; /* No border */
+    border-radius: 50%; /* Circular button */
+    cursor: pointer; /* Cursor to pointer on hover */
+    padding: 2px 5px; /* Padding inside the button */
+}
+
+.sidebar .home-icon img {
+    width: 20px; /* Adjust the size as needed */
+    height: auto;
+    margin: 0 auto; /* Center the icon in the sidebar */
+    display: block;
+    filter: invert(100%); /* Invert the color to white */
+}
+
+/* Adjust the positioning of the home icon */
+.sidebar .home-icon {
+    position: absolute; /* Position it absolutely within the sidebar */
+    top: 40px; /* Adjust the top position as needed */
+    left: 2px; /* Adjust the left position as needed */
+    z-index: 2; /* Ensure it appears above other content */
+}
+
+/* Adjust the padding of the sidebar to make space for the icon */
+.sidebar {
+    padding-top: 40px; /* Adjust the top padding to make space for the home icon */
+    padding-left: 70px; /* Adjust the left padding to make space for the icon */
+}
+
+
+.sidebar {
+    padding-top: 40px; /* Adjust the top padding to make space for the home icon */
+}
+
+.home-icon {
+    display: none; /* Hide the home icon initially */
+}
+
+.sidebar .home-icon #estimatesText {
+    display: none; /* initially hidden */
+    position: absolute; /* or relative */
+    top: 40px; /* adjust as needed */
+    left: 30px; /* adjust to place it right to the Home Icon */
+    /* Additional styling like font-size, color etc. */
+}
+
+
+
+
+  
+
+
+  

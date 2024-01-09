@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sea Trial Dropdown</title>
+    <link rel="stylesheet" type="text/css" href="Store-locator.css">
+</head>
+<body>
+    <video autoplay muted loop id="background-video">
+        <source src="C:/Users/maym2/Downloads/Welcome to Premier Yamaha. Southeast Texas Top Bay & Bass Boat Dealer. Plus Pontoon & Aluminum.mp4" type="video/mp4">
+    </video>
+    <div class="dropdown">
+        <button class="dropbtn">Select a Store</button>
+        <div class="dropdown-content" id="myDropdown">
+            <a href="AransasPass.html">Aransas Pass</a>
+            <a href="Beaumont.html">Beaumont</a>
+            <!-- ... other links ... -->
+            <a href="corpus-christi.html">Corpus Christi</a>
+            <a href="daphne.html">Daphne</a>
+            <!-- ... other links ... -->
+            <a href="gulfport.html">Gulfport</a>
+            <a href="houston.html">Houston</a>
+            <!-- ... other links ... -->
+            <a href="jasper.html">Jasper</a>
+            <a href="lufkin.html">Lufkin</a>
+            <!-- ... other links ... -->
+            <a href="ocean-springs.html">Ocean Springs</a>
+            <a href="san-antonio.html">San Antonio</a>
+        </div>
+    </div>
+    </body>
+    </html>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var dropdown = document.querySelector('.dropbtn');
+            dropdown.addEventListener('click', function() {
+                var content = document.getElementById('myDropdown');
+                if (content.style.display === 'block') {
+                    content.style.display = 'none';
+                } else {
+                    content.style.display = 'block';
+                }
+            });
+        });
+    </script>    
+
+    <script>
+        window.onload = function() {
+            var video = document.getElementById('background-video');
+            var savedTime = localStorage.getItem('videoTime');
+            if (savedTime) {
+                video.currentTime = savedTime;
+                video.play();
+            }
+        };  
+    </script>
+    
+</body>
+</html>
